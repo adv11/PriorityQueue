@@ -33,7 +33,7 @@ connecting ropes would always have same
 or more cost. For example, if we connect
 4 and 6 first (we get three strings of 3,
 2 and 10), then connect 10 and 3 (we get
-two strings of 13 and 2). Finally we
+two strings of 13 and 2). Finally, we
 connect 13 and 2. Total cost in this way
 is 10 + 13 + 15 = 38.
 Example 2:
@@ -55,11 +55,29 @@ Your Task:
 You don't need to read input or print anything. Your task isto complete the function minCost() which takes 2 arguments and returns the minimum cost.
 
 Expected Time Complexity : O(nlogn)
-Expected Auxilliary Space : O(n)
+Expected Auxiliary Space : O(n)
 
 Constraints:
 1 ≤ N ≤ 100000
 1 ≤ arr[i] ≤ 106
+*/
+
+/*
+Proof :
+Let there are 3 ropes A, B and C where A>B>C
+
+Case 1 : Without sorting
+arr = [A, B, C], cost1 = 0
+arr = [A+B, C], cost1 = A+B
+arr = [A+B+C], cost1 = A+B+A+B+C = 2A+2B+C
+
+Case 2 : With sorting
+arr = [A, B, C], cost2 = 0
+arr = [A, B+C], cost2 = B+C
+arr = [A+B+C], cost2 = B+C+A+B+C = A+2B+2C
+
+Because A>B>C
+so, cost1 > cost2 that's why we are using min heap for solving this problem because min heap sorts the array.
 */
 public class Connect_N_ropes_with_minimum_cost {
     public static int minCost(int[] array){
